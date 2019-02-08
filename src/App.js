@@ -33,9 +33,9 @@ class Previewer extends React.Component {
   }
   render() {
     return (
-      <div id="previewer-window" className="window">
+      <div id="preview-window" className="window">
         <h2 className="title-bar"> Previewer </h2>
-        <div id="previewer" className="textbox">
+        <div id="preview" className="textbox">
         {this.props.input}
         </div>
       </div>
