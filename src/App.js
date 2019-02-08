@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class InputField extends React.Component {
+class Editor extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-
     this.props.onHandleChange(event.target.value)
   }
   render() {
     return (
-      <div id="input">
-        <h2>Editor</h2>
+      <div id="editor-window" className="window">
+        <h2 className="title-bar">Editor</h2>
+        <div className="textbox">
         <textarea
-          rows="4" cols="50"
+          rows="20" cols="60"
           id="editor"
           value={this.props.input}
           onChange={this.handleChange} />
+        </div>
       </div>
     );
   }
@@ -32,9 +33,9 @@ class Previewer extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h2> Previewer </h2>
-        <div id="preview">
+      <div id="previewer-window" className="window">
+        <h2 className="title-bar"> Previewer </h2>
+        <div id="previewer" className="textbox">
         {this.props.input}
         </div>
       </div>
@@ -46,7 +47,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      input: 'Please enter your markdown here'
     }
     this.handleChange = this.inputChange.bind(this);
   }
@@ -64,8 +65,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <InputField onHandleChange={this.inputChange} input={this.state.input}/>
+      <div className="App container">
+        <Editor onHandleChange={this.inputChange} input={this.state.input}/>
         <Previewer input={this.state.input} />
       </div>
 
